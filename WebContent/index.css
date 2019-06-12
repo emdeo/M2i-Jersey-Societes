@@ -1,0 +1,51 @@
+@charset "ISO-8859-1";
+
+/* Régler la largeur de colonne d'un tableau */
+table .w-5 {
+	width: 5%;
+}
+
+table .w-15 {
+	width: 15%;
+}
+
+/* Mise en forme des boutons (couleurs) */
+.btnSelect {
+	background-color: DodgerBlue; /* Blue background */
+	border: none; /* Remove borders */
+	color: white; /* White text */
+	padding: 12px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btnUpdate, .btnUpdateEmploye {
+	background-color: #28a745; /* Green background */
+	border: none; /* Remove borders */
+	color: white; /* White text */
+	padding: 12px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btnDelete, .btnDeleteEmploye {
+	background-color: LightCoral; /* Red background */
+	border: none; /* Remove borders */
+	color: white; /* White text */
+	padding: 12px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Background plus sombre quand on passe la souris sur le bouton */
+.btnSelect:hover {
+	background-color: RoyalBlue;
+}
+
+.btnUpdate:hover {
+	background-color: #208537;
+}
+
+.btnDelete:hover {
+	background-color: IndianRed;
+}
