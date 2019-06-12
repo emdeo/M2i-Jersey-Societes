@@ -66,18 +66,18 @@ public class DAO_Personne implements IDAO<Personne> {
 			PreparedStatement ps = _Cnn.prepareStatement(ma_requete);
 
 			// Complète la requête SQL
-			ps.setInt(1, p.getID_Personne());
-			ps.setString(2, p.getNom());
-			ps.setString(3, p.getPrenom());
-			ps.setFloat(4, p.getPoids());
-			ps.setFloat(5, p.getTaille());
-			ps.setString(6, p.getGenre().name());
-			ps.setInt(7, p.getID_Societe());
+			ps.setInt(1, p.get_ID_Personne());
+			ps.setString(2, p.get_Nom());
+			ps.setString(3, p.get_Prenom());
+			ps.setFloat(4, p.get_Poids());
+			ps.setFloat(5, p.get_Taille());
+			ps.setString(6, p.get_Genre().name());
+			ps.setInt(7, p.get_ID_Societe());
 
 //			Incrémenter le nombre d'employés de 1 pour la société correspondante
 			DAO_Societe daos = new DAO_Societe();
-			int nbEmployes = daos.Read(p.getID_Societe()).get_Nb_Employes();
-			daos.UpdateNbEmployes(p.getID_Societe(), nbEmployes + 1);
+			int nbEmployes = daos.Read(p.get_ID_Societe()).get_Nb_Employes();
+			daos.UpdateNbEmployes(p.get_ID_Societe(), nbEmployes + 1);
 
 			// Enregistre le nombre de modifs exécutées
 			output = ps.executeUpdate();
@@ -207,19 +207,19 @@ public class DAO_Personne implements IDAO<Personne> {
 				+ "Taille = ?, Sexe = ?, ID_Societe = ? WHERE ID_Personne = ?";
 
 //		Message d'info
-		System.out.println("DAO_Personne Update " + p.getID_Personne());
+		System.out.println("DAO_Personne Update " + p.get_ID_Personne());
 
 		try {
 			PreparedStatement ps = _Cnn.prepareStatement(ma_requete);
 
 			// Complète la requête SQL
-			ps.setString(1, p.getNom());
-			ps.setString(2, p.getPrenom());
-			ps.setFloat(3, p.getPoids());
-			ps.setFloat(4, p.getTaille());
-			ps.setString(5, p.getGenre().name());
-			ps.setInt(6, p.getID_Societe());
-			ps.setInt(7, p.getID_Personne());
+			ps.setString(1, p.get_Nom());
+			ps.setString(2, p.get_Prenom());
+			ps.setFloat(3, p.get_Poids());
+			ps.setFloat(4, p.get_Taille());
+			ps.setString(5, p.get_Genre().name());
+			ps.setInt(6, p.get_ID_Societe());
+			ps.setInt(7, p.get_ID_Personne());
 
 			// Enregistre le nombre de modifs exécutées
 			output = ps.executeUpdate();

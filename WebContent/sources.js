@@ -1,15 +1,16 @@
 $(document).ready(function() {
 	
-	var lstSocietes = "?"
-	GenererTableauSociete(lstSocietes)
-	
 	$(".btnSelect").on("click", function(){
+		
+//		ID de la société sélectionnée
+		let id = $(this).attr("data-idsociete")
+		
 		$.ajax({
-			url : "rest/societes",
+			url : "http://localhost:8080/JerseySociete/rest/societes/" + id,
 			type : "get",
-			dataType : "text",
+			dataType : "json",
 			success : function(res, state){
-				alert(res)
+				alert(JSON.stringify(res))
 			},
 			error : function(request){
 				alert("Erreur " + request.status)
@@ -19,9 +20,9 @@ $(document).ready(function() {
 	
 	$("#btnAjouterSociete").on("click", function(){
 		$.ajax({
-			url : "rest/societes",
+			url : "http://localhost:8080/JerseySociete/rest/societes/",
 			method : "post",
-			dataType : "application/json",
+			dataType : "json",
 			success : function(res, state){
 				alert(res)
 			},
@@ -33,7 +34,7 @@ $(document).ready(function() {
 	
 	$(".btnUpdate").on("click", function(){
 		$.ajax({
-			url : "rest/societes",
+			url : "http://localhost:8080/JerseySociete/rest/societes/",
 			type : "put",
 			success : function(res, state){
 				alert(res)
@@ -46,7 +47,7 @@ $(document).ready(function() {
 	
 	$(".btnDelete").on("click", function(){
 		$.ajax({
-			url : "rest/societes",
+			url : "http://localhost:8080/JerseySociete/rest/societes/",
 			method : "delete",
 			success : function(res, state){
 				alert(res)

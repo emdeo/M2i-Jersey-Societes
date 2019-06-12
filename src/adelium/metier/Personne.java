@@ -2,35 +2,36 @@ package adelium.metier;
 
 public class Personne {
 
-	private int ID_Personne;
-	private String Nom;
-	private String Prenom;
-	private float Taille;
-	private float Poids;
-	private Sexe Genre;
-	private int ID_Societe;
+	private int _ID_Personne;
+	private String _Nom;
+	private String _Prenom;
+	private float _Taille;
+	private float _Poids;
+	private Sexe _Genre;
+	private int _ID_Societe;
 
 	/**
 	 * Constructeur n°1. Préférable car il est indépendant du servlet (ie. on peut
 	 * l'instancier sans recourir à un fichier JSP).
 	 * 
-	 * @param iD_Personne
-	 * @param nom
-	 * @param prenom
-	 * @param taille
-	 * @param poids
-	 * @param genre
-	 * @param iD_Societe
+	 * @param _ID_Personne
+	 * @param _Nom
+	 * @param _Prenom
+	 * @param _Taille
+	 * @param _Poids
+	 * @param _Genre
+	 * @param _ID_Societe
 	 */
-	public Personne(int iD_Personne, String nom, String prenom, float taille, float poids, Sexe genre, int iD_Societe) {
+	public Personne(int _ID_Personne, String _Nom, String _Prenom, float _Taille, float _Poids, Sexe _Genre,
+			int _ID_Societe) {
 		super();
-		ID_Personne = iD_Personne;
-		Nom = nom;
-		Prenom = prenom;
-		Taille = taille;
-		Poids = poids;
-		Genre = genre;
-		ID_Societe = iD_Societe;
+		this._ID_Personne = _ID_Personne;
+		this._Nom = _Nom;
+		this._Prenom = _Prenom;
+		this._Taille = _Taille;
+		this._Poids = _Poids;
+		this._Genre = _Genre;
+		this._ID_Societe = _ID_Societe;
 	}
 
 	/**
@@ -40,13 +41,13 @@ public class Personne {
 	 */
 	public Personne(javax.servlet.ServletRequest req) {
 		super();
-		ID_Personne = Integer.parseInt(req.getParameter("txtIDPersonne"));
-		Nom = req.getParameter("txtNom");
-		Prenom = req.getParameter("txtPrenom");
-		Taille = Float.parseFloat(req.getParameter("txtTaille"));
-		Poids = Float.parseFloat(req.getParameter("txtPoids"));
-		Genre = Sexe.valueOf(req.getParameter("lstSexe"));
-		ID_Societe = Integer.parseInt(req.getParameter("txtIDSociete"));
+		this._ID_Personne = Integer.parseInt(req.getParameter("txtIDPersonne"));
+		this._Nom = req.getParameter("txt_Nom");
+		this._Prenom = req.getParameter("txt_Prenom");
+		this._Taille = Float.parseFloat(req.getParameter("txt_Taille"));
+		this._Poids = Float.parseFloat(req.getParameter("txt_Poids"));
+		this._Genre = Sexe.valueOf(req.getParameter("lstSexe"));
+		this._ID_Societe = Integer.parseInt(req.getParameter("txtIDSociete"));
 	}
 
 	/**
@@ -65,41 +66,41 @@ public class Personne {
 	 * @return
 	 */
 	public float calculIMC() {
-		return arrondi(this.Poids / this.Taille * this.Taille);
+		return arrondi(this._Poids / this._Taille * this._Taille);
 	}
 
 	/**
-	 * Calculer le poids minimum.
+	 * Calculer le _Poids minimum.
 	 * 
 	 * @return
 	 */
-	public float poidsMin() {
-		return arrondi(19 * (this.Taille * this.Taille));
+	public float _PoidsMin() {
+		return arrondi(19 * (this._Taille * this._Taille));
 	}
 
 	/**
-	 * Calculer le poids maximum.
+	 * Calculer le _Poids maximum.
 	 * 
 	 * @return
 	 */
-	public float poidsMax() {
-		return arrondi(25 * (this.Taille * this.Taille));
+	public float _PoidsMax() {
+		return arrondi(25 * (this._Taille * this._Taille));
 	}
 
 	/**
-	 * Calculer le poids idéal.
+	 * Calculer le _Poids idéal.
 	 * 
 	 * @return
 	 */
-	public float poidsIdeal() {
+	public float _PoidsIdeal() {
 
-		float taille = this.Taille * 100f;
-		float output = taille - 100f;
+		float _Taille = this._Taille * 100f;
+		float output = _Taille - 100f;
 
-		if (this.Genre == Sexe.FEMININ)
-			output -= ((taille - 150f) / 2.5f);
+		if (this._Genre == Sexe.FEMININ)
+			output -= ((_Taille - 150f) / 2.5f);
 		else
-			output -= ((taille - 150f) / 4f);
+			output -= ((_Taille - 150f) / 4f);
 
 		return arrondi(output);
 	}
@@ -113,75 +114,75 @@ public class Personne {
 		float imc = calculIMC();
 
 		if (imc < 19)
-			return "Sous-poids";
+			return "Sous-_Poids";
 		else if (imc < 25)
-			return "Poids sain";
+			return "_Poids sain";
 		else if (imc < 30)
-			return "Surpoids";
+			return "Sur_Poids";
 		else if (imc < 40)
 			return "Obésité";
 		return "Obésité morbide";
 	}
 
-	public String getNom() {
-		return Nom;
+	public String get_Nom() {
+		return _Nom;
 	}
 
-	public void setNom(String nom) {
-		Nom = nom;
+	public void set_Nom(String _Nom) {
+		this._Nom = _Nom;
 	}
 
-	public String getPrenom() {
-		return Prenom;
+	public String get_Prenom() {
+		return _Prenom;
 	}
 
-	public void setPrenom(String prenom) {
-		Prenom = prenom;
+	public void set_Prenom(String _Prenom) {
+		this._Prenom = _Prenom;
 	}
 
-	public float getTaille() {
-		return Taille;
+	public float get_Taille() {
+		return _Taille;
 	}
 
-	public void setTaille(float taille) {
-		Taille = taille;
+	public void set_Taille(float _Taille) {
+		this._Taille = _Taille;
 	}
 
-	public float getPoids() {
-		return Poids;
+	public float get_Poids() {
+		return _Poids;
 	}
 
-	public void setPoids(float poids) {
-		Poids = poids;
+	public void set_Poids(float _Poids) {
+		this._Poids = _Poids;
 	}
 
-	public Sexe getGenre() {
-		return Genre;
+	public Sexe get_Genre() {
+		return _Genre;
 	}
 
-	public void setGenre(Sexe genre) {
-		Genre = genre;
+	public void set_Genre(Sexe _Genre) {
+		this._Genre = _Genre;
 	}
 
-	public int getID_Personne() {
-		return ID_Personne;
+	public int get_ID_Personne() {
+		return _ID_Personne;
 	}
 
-	public void setID_Personne(int iD_Personne) {
-		ID_Personne = iD_Personne;
+	public void set_ID_Personne(int _ID_Personne) {
+		this._ID_Personne = _ID_Personne;
 	}
 
-	public int getID_Societe() {
-		return ID_Societe;
+	public int get_ID_Societe() {
+		return _ID_Societe;
 	}
 
-	public void setID_Societe(int iD_Societe) {
-		ID_Societe = iD_Societe;
+	public void set_ID_Societe(int _ID_Societe) {
+		this._ID_Societe = _ID_Societe;
 	}
 
 	@Override
 	public String toString() {
-		return "Personne [ID_Personne=" + ID_Personne + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Taille=" + Taille
-				+ ", Poids=" + Poids + ", Genre=" + Genre + ", ID_Societe=" + ID_Societe + "]";
+		return "Personne [ID_Personne=" + _ID_Personne + ", Nom=" + _Nom + ", Prenom=" + _Prenom + ", Taille=" + _Taille
+				+ ", Poids=" + _Poids + ", Genre=" + _Genre + ", ID_Societe=" + _ID_Societe + "]";
 	}
 }

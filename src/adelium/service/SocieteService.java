@@ -12,46 +12,43 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import adelium.dao.DAO_Personne;
 import adelium.dao.DAO_Societe;
+import adelium.metier.Personne;
 import adelium.metier.Societe;
 
 @Path("/societes")
 public class SocieteService {
+
+	DAO_Societe daos = new DAO_Societe();
+	DAO_Personne daop = new DAO_Personne();
 
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Societe LireUneSociete(@PathParam("id") int id) {
 
-		DAO_Societe daos = new DAO_Societe();
-		Societe Soc = daos.Read(id);
-		
-		System.out.println(Soc);
-		
-		return Soc;
+		// Renvoie les infos d'une société au format JSON
+		return daos.Read(id);
 
 	}
 
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Societe> LireToutesSocietes() {
 
-		DAO_Societe daos = new DAO_Societe();
 		ArrayList<Societe> lstSoc = daos.ReadAll();
-		
 		return lstSoc;
 
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
 	public Societe AjoutSociete(Societe s) {
 
-		// message renvoyé à l'exécution d'une méthode POST
+		daos.Create(s);
 		System.out.println("Ajout de la société " + s);
-		s.set_ID_Societe(120);
 		return s;
 
 	}

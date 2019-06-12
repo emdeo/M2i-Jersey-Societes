@@ -171,20 +171,20 @@ public class HTMLDynamique {
 				+ "</th><th>Sexe</th><th>ID Société</th><th></th><th></th></tr></thead><tbody id='tbodyEmployes'>";
 
 		for (Personne p : lstEmployes) {
-			String IDPers = "<tr><td>" + p.getID_Personne() + "</td>";
-			String Nom = "<td id='tdNomEmploye'>" + p.getNom() + "</td>";
-			String Prenom = "<td id='tdPrenomEmploye'>" + p.getPrenom() + "</td>";
-			String Taille = "<td id='tdTailleEmploye'>" + p.getTaille() + "</td>";
-			String Poids = "<td id='tdPoidsEmploye'>" + p.getPoids() + "</td>";
-			String Genre = "<td>" + p.getGenre() + "</td>";
-			String IDSoc = "<td>" + p.getID_Societe() + "</td>";
+			String IDPers = "<tr><td>" + p.get_ID_Personne() + "</td>";
+			String Nom = "<td id='tdNomEmploye'>" + p.get_Nom() + "</td>";
+			String Prenom = "<td id='tdPrenomEmploye'>" + p.get_Prenom() + "</td>";
+			String Taille = "<td id='tdTailleEmploye'>" + p.get_Taille() + "</td>";
+			String Poids = "<td id='tdPoidsEmploye'>" + p.get_Poids() + "</td>";
+			String Genre = "<td>" + p.get_Genre() + "</td>";
+			String IDSoc = "<td>" + p.get_ID_Societe() + "</td>";
 
 			String btnModifier = "<td class='w-5'><button data-idSociete='" + idSociete + "' data-idPersonne='"
-					+ p.getID_Personne() + "' class='btnUpdateEmploye' data-toggle='modal' data-target=" + "'#"
+					+ p.get_ID_Personne() + "' class='btnUpdateEmploye' data-toggle='modal' data-target=" + "'#"
 					+ nom_modal + "'><i class='fa fa-pencil'></i></button></td>";
 
 			String btnSupprimer = "<td class='w-5'><button data-idSociete='" + idSociete + "' data-idPersonne='"
-					+ +p.getID_Personne() + "' class='btnDeleteEmploye'><i class='fa fa-remove'></i></button></td>";
+					+ +p.get_ID_Personne() + "' class='btnDeleteEmploye'><i class='fa fa-remove'></i></button></td>";
 
 			output += IDPers + Nom + Prenom + Taille + Poids + Genre + IDSoc + btnModifier + btnSupprimer;
 		}
